@@ -8,7 +8,7 @@ module ALU(
 	always @(*) begin
 		if (ALUControl == 3'b010) // add 
 			ALUResult = SrcA + SrcB; 
-		if (ALUControl == 3'b110) // sub
+		else // sub
 			ALUResult = SrcA - SrcB; 
 	end 
 	

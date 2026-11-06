@@ -12,10 +12,10 @@ module data_memory(
 	
 	always_ff@(posedge clk or negedge rst)
 	begin
-		if(!reset) begin
-			for(int i = 0; i <256; i++) registers[i] <= i; 
+		if(!rst) begin
+			for(int i = 0; i <256; i++) mem[i] <= i; 
 		end
-		if (we) mem[A] <= WD //async write 
+		if (WE) mem[A] <= WD //async write 
 	end
 	// async read? 
 	assign RD = mem[A]; 
