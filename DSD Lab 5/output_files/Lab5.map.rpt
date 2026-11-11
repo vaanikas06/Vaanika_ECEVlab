@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Lab5
-Wed Nov  4 16:44:07 2026
+Wed Nov 11 17:34:12 2026
 Quartus II 64-Bit Version 15.0.2 Build 153 07/15/2015 SJ Web Edition
 
 
@@ -13,11 +13,28 @@ Quartus II 64-Bit Version 15.0.2 Build 153 07/15/2015 SJ Web Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Multiplexer Restructuring Statistics (Restructuring Performed)
- 10. Post-Synthesis Netlist Statistics for Top Partition
- 11. Elapsed Time Per Partition
- 12. Analysis & Synthesis Messages
+  8. Registers Removed During Synthesis
+  9. Removed Registers Triggering Further Register Optimizations
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for Inferred Entity Instance: display:t2|lpm_divide:Mod0
+ 14. Parameter Settings for Inferred Entity Instance: display:t2|lpm_divide:Div0
+ 15. Parameter Settings for Inferred Entity Instance: display:t2|lpm_divide:Mod1
+ 16. Parameter Settings for Inferred Entity Instance: display:t2|lpm_divide:Div1
+ 17. Parameter Settings for Inferred Entity Instance: display:t2|lpm_divide:Mod2
+ 18. Parameter Settings for Inferred Entity Instance: display:t3|lpm_divide:Mod0
+ 19. Parameter Settings for Inferred Entity Instance: display:t3|lpm_divide:Div0
+ 20. Parameter Settings for Inferred Entity Instance: display:t3|lpm_divide:Mod1
+ 21. Parameter Settings for Inferred Entity Instance: display:t3|lpm_divide:Div1
+ 22. Parameter Settings for Inferred Entity Instance: display:t3|lpm_divide:Mod2
+ 23. Port Connectivity Checks: "ALU:t1"
+ 24. Port Connectivity Checks: "register_file:r_f"
+ 25. Port Connectivity Checks: "MUX_RegDst:m_rd"
+ 26. Port Connectivity Checks: "sign_extend:se"
+ 27. Post-Synthesis Netlist Statistics for Top Partition
+ 28. Elapsed Time Per Partition
+ 29. Analysis & Synthesis Messages
 
 
 
@@ -44,16 +61,16 @@ agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Nov  4 16:44:07 2026      ;
+; Analysis & Synthesis Status        ; Successful - Wed Nov 11 17:34:12 2026      ;
 ; Quartus II 64-Bit Version          ; 15.0.2 Build 153 07/15/2015 SJ Web Edition ;
 ; Revision Name                      ; Lab5                                       ;
-; Top-level Entity Name              ; register_file                              ;
+; Top-level Entity Name              ; top                                        ;
 ; Family                             ; Cyclone IV E                               ;
-; Total logic elements               ; 2,418                                      ;
-;     Total combinational functions  ; 2,418                                      ;
-;     Dedicated logic registers      ; 1,024                                      ;
-; Total registers                    ; 1024                                       ;
-; Total pins                         ; 146                                        ;
+; Total logic elements               ; 14,643                                     ;
+;     Total combinational functions  ; 7,500                                      ;
+;     Dedicated logic registers      ; 8,234                                      ;
+; Total registers                    ; 8234                                       ;
+; Total pins                         ; 207                                        ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0                                          ;
 ; Embedded Multiplier 9-bit elements ; 0                                          ;
@@ -67,7 +84,7 @@ agreement for further details.
 ; Option                                                                     ; Setting            ; Default Value      ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                     ; EP4CE115F29C7      ;                    ;
-; Top-level entity name                                                      ; register_file      ; Lab5               ;
+; Top-level entity name                                                      ; top                ; Lab5               ;
 ; Family name                                                                ; Cyclone IV E       ; Cyclone V          ;
 ; Verilog Show LMF Mapping Messages                                          ; Off                ;                    ;
 ; Verilog Version                                                            ; SystemVerilog_2005 ; Verilog_2001       ;
@@ -160,55 +177,1191 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                               ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                           ; Library ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------+---------+
-; register_file.sv                 ; yes             ; User SystemVerilog HDL File  ; /home/user/Documents/GitHub/Vaanika_ECEVlab/DSD Lab 5/register_file.sv ;         ;
-+----------------------------------+-----------------+------------------------------+------------------------------------------------------------------------+---------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                         ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                     ; Library ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------+---------+
+; register_file.sv                 ; yes             ; User SystemVerilog HDL File  ; /home/user/Documents/GitHub/Vaanika_ECEVlab/DSD Lab 5/register_file.sv           ;         ;
+; ALU.sv                           ; yes             ; User SystemVerilog HDL File  ; /home/user/Documents/GitHub/Vaanika_ECEVlab/DSD Lab 5/ALU.sv                     ;         ;
+; data_memory.sv                   ; yes             ; User SystemVerilog HDL File  ; /home/user/Documents/GitHub/Vaanika_ECEVlab/DSD Lab 5/data_memory.sv             ;         ;
+; sign_extend.sv                   ; yes             ; User SystemVerilog HDL File  ; /home/user/Documents/GitHub/Vaanika_ECEVlab/DSD Lab 5/sign_extend.sv             ;         ;
+; MUX_RegDst.sv                    ; yes             ; User SystemVerilog HDL File  ; /home/user/Documents/GitHub/Vaanika_ECEVlab/DSD Lab 5/MUX_RegDst.sv              ;         ;
+; MUX_MemtoReg.sv                  ; yes             ; User SystemVerilog HDL File  ; /home/user/Documents/GitHub/Vaanika_ECEVlab/DSD Lab 5/MUX_MemtoReg.sv            ;         ;
+; MUX_ALUSrc.sv                    ; yes             ; User SystemVerilog HDL File  ; /home/user/Documents/GitHub/Vaanika_ECEVlab/DSD Lab 5/MUX_ALUSrc.sv              ;         ;
+; top.sv                           ; yes             ; User SystemVerilog HDL File  ; /home/user/Documents/GitHub/Vaanika_ECEVlab/DSD Lab 5/top.sv                     ;         ;
+; display.sv                       ; yes             ; User SystemVerilog HDL File  ; /home/user/Documents/GitHub/Vaanika_ECEVlab/DSD Lab 5/display.sv                 ;         ;
+; lpm_divide.tdf                   ; yes             ; Megafunction                 ; /home/software/altera/15.0/quartus/libraries/megafunctions/lpm_divide.tdf        ;         ;
+; abs_divider.inc                  ; yes             ; Megafunction                 ; /home/software/altera/15.0/quartus/libraries/megafunctions/abs_divider.inc       ;         ;
+; sign_div_unsign.inc              ; yes             ; Megafunction                 ; /home/software/altera/15.0/quartus/libraries/megafunctions/sign_div_unsign.inc   ;         ;
+; aglobal150.inc                   ; yes             ; Megafunction                 ; /home/software/altera/15.0/quartus/libraries/megafunctions/aglobal150.inc        ;         ;
+; db/lpm_divide_vam.tdf            ; yes             ; Auto-Generated Megafunction  ; /home/user/Documents/GitHub/Vaanika_ECEVlab/DSD Lab 5/db/lpm_divide_vam.tdf      ;         ;
+; db/sign_div_unsign_klh.tdf       ; yes             ; Auto-Generated Megafunction  ; /home/user/Documents/GitHub/Vaanika_ECEVlab/DSD Lab 5/db/sign_div_unsign_klh.tdf ;         ;
+; db/alt_u_div_s6f.tdf             ; yes             ; Auto-Generated Megafunction  ; /home/user/Documents/GitHub/Vaanika_ECEVlab/DSD Lab 5/db/alt_u_div_s6f.tdf       ;         ;
+; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction  ; /home/user/Documents/GitHub/Vaanika_ECEVlab/DSD Lab 5/db/add_sub_7pc.tdf         ;         ;
+; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction  ; /home/user/Documents/GitHub/Vaanika_ECEVlab/DSD Lab 5/db/add_sub_8pc.tdf         ;         ;
+; db/lpm_divide_sim.tdf            ; yes             ; Auto-Generated Megafunction  ; /home/user/Documents/GitHub/Vaanika_ECEVlab/DSD Lab 5/db/lpm_divide_sim.tdf      ;         ;
+; db/lpm_divide_vim.tdf            ; yes             ; Auto-Generated Megafunction  ; /home/user/Documents/GitHub/Vaanika_ECEVlab/DSD Lab 5/db/lpm_divide_vim.tdf      ;         ;
+; db/sign_div_unsign_nlh.tdf       ; yes             ; Auto-Generated Megafunction  ; /home/user/Documents/GitHub/Vaanika_ECEVlab/DSD Lab 5/db/sign_div_unsign_nlh.tdf ;         ;
+; db/alt_u_div_27f.tdf             ; yes             ; Auto-Generated Megafunction  ; /home/user/Documents/GitHub/Vaanika_ECEVlab/DSD Lab 5/db/alt_u_div_27f.tdf       ;         ;
++----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------+---------+
 
 
-+-----------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary               ;
-+---------------------------------------------+-------------+
-; Resource                                    ; Usage       ;
-+---------------------------------------------+-------------+
-; Estimated Total logic elements              ; 2,418       ;
-;                                             ;             ;
-; Total combinational functions               ; 2418        ;
-; Logic element usage by number of LUT inputs ;             ;
-;     -- 4 input functions                    ; 2418        ;
-;     -- 3 input functions                    ; 0           ;
-;     -- <=2 input functions                  ; 0           ;
-;                                             ;             ;
-; Logic elements by mode                      ;             ;
-;     -- normal mode                          ; 2418        ;
-;     -- arithmetic mode                      ; 0           ;
-;                                             ;             ;
-; Total registers                             ; 1024        ;
-;     -- Dedicated logic registers            ; 1024        ;
-;     -- I/O registers                        ; 0           ;
-;                                             ;             ;
-; I/O pins                                    ; 146         ;
-;                                             ;             ;
-; Embedded Multiplier 9-bit elements          ; 0           ;
-;                                             ;             ;
-; Maximum fan-out node                        ; A3[4]~input ;
-; Maximum fan-out                             ; 1056        ;
-; Total fan-out                               ; 12986       ;
-; Average fan-out                             ; 3.48        ;
-+---------------------------------------------+-------------+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 14,643    ;
+;                                             ;           ;
+; Total combinational functions               ; 7500      ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 5673      ;
+;     -- 3 input functions                    ; 476       ;
+;     -- <=2 input functions                  ; 1351      ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 7274      ;
+;     -- arithmetic mode                      ; 226       ;
+;                                             ;           ;
+; Total registers                             ; 8234      ;
+;     -- Dedicated logic registers            ; 8234      ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 207       ;
+;                                             ;           ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 8234      ;
+; Total fan-out                               ; 59004     ;
+; Average fan-out                             ; 3.65      ;
++---------------------------------------------+-----------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |register_file             ; 2418 (2418)       ; 1024 (1024)  ; 0           ; 0            ; 0       ; 0         ; 146  ; 0            ; |register_file      ; work         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                    ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                             ; Library Name ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------+--------------+
+; |top                                      ; 7500 (13)         ; 8234 (0)     ; 0           ; 0            ; 0       ; 0         ; 207  ; 0            ; |top                                                                                                            ; work         ;
+;    |ALU:t1|                               ; 36 (36)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|ALU:t1                                                                                                     ; work         ;
+;    |MUX_MemtoReg:m_mr|                    ; 5474 (5474)       ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|MUX_MemtoReg:m_mr                                                                                          ; work         ;
+;    |data_memory:d_m|                      ; 1304 (1304)       ; 8192 (8192)  ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|data_memory:d_m                                                                                            ; work         ;
+;    |display:t2|                           ; 319 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2                                                                                                 ; work         ;
+;       |lpm_divide:Div0|                   ; 82 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2|lpm_divide:Div0                                                                                 ; work         ;
+;          |lpm_divide_sim:auto_generated|  ; 82 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2|lpm_divide:Div0|lpm_divide_sim:auto_generated                                                   ; work         ;
+;             |sign_div_unsign_klh:divider| ; 82 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2|lpm_divide:Div0|lpm_divide_sim:auto_generated|sign_div_unsign_klh:divider                       ; work         ;
+;                |alt_u_div_s6f:divider|    ; 82 (82)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2|lpm_divide:Div0|lpm_divide_sim:auto_generated|sign_div_unsign_klh:divider|alt_u_div_s6f:divider ; work         ;
+;       |lpm_divide:Div1|                   ; 69 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2|lpm_divide:Div1                                                                                 ; work         ;
+;          |lpm_divide_vim:auto_generated|  ; 69 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2|lpm_divide:Div1|lpm_divide_vim:auto_generated                                                   ; work         ;
+;             |sign_div_unsign_nlh:divider| ; 69 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2|lpm_divide:Div1|lpm_divide_vim:auto_generated|sign_div_unsign_nlh:divider                       ; work         ;
+;                |alt_u_div_27f:divider|    ; 69 (69)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2|lpm_divide:Div1|lpm_divide_vim:auto_generated|sign_div_unsign_nlh:divider|alt_u_div_27f:divider ; work         ;
+;       |lpm_divide:Mod0|                   ; 85 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2|lpm_divide:Mod0                                                                                 ; work         ;
+;          |lpm_divide_vam:auto_generated|  ; 85 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2|lpm_divide:Mod0|lpm_divide_vam:auto_generated                                                   ; work         ;
+;             |sign_div_unsign_klh:divider| ; 85 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2|lpm_divide:Mod0|lpm_divide_vam:auto_generated|sign_div_unsign_klh:divider                       ; work         ;
+;                |alt_u_div_s6f:divider|    ; 85 (85)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2|lpm_divide:Mod0|lpm_divide_vam:auto_generated|sign_div_unsign_klh:divider|alt_u_div_s6f:divider ; work         ;
+;       |lpm_divide:Mod1|                   ; 52 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2|lpm_divide:Mod1                                                                                 ; work         ;
+;          |lpm_divide_vam:auto_generated|  ; 52 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2|lpm_divide:Mod1|lpm_divide_vam:auto_generated                                                   ; work         ;
+;             |sign_div_unsign_klh:divider| ; 52 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2|lpm_divide:Mod1|lpm_divide_vam:auto_generated|sign_div_unsign_klh:divider                       ; work         ;
+;                |alt_u_div_s6f:divider|    ; 52 (52)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2|lpm_divide:Mod1|lpm_divide_vam:auto_generated|sign_div_unsign_klh:divider|alt_u_div_s6f:divider ; work         ;
+;       |lpm_divide:Mod2|                   ; 10 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2|lpm_divide:Mod2                                                                                 ; work         ;
+;          |lpm_divide_vam:auto_generated|  ; 10 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2|lpm_divide:Mod2|lpm_divide_vam:auto_generated                                                   ; work         ;
+;             |sign_div_unsign_klh:divider| ; 10 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2|lpm_divide:Mod2|lpm_divide_vam:auto_generated|sign_div_unsign_klh:divider                       ; work         ;
+;                |alt_u_div_s6f:divider|    ; 10 (10)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2|lpm_divide:Mod2|lpm_divide_vam:auto_generated|sign_div_unsign_klh:divider|alt_u_div_s6f:divider ; work         ;
+;       |seg7:s0|                           ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2|seg7:s0                                                                                         ; work         ;
+;       |seg7:s1|                           ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2|seg7:s1                                                                                         ; work         ;
+;       |seg7:s2|                           ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t2|seg7:s2                                                                                         ; work         ;
+;    |display:t3|                           ; 319 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3                                                                                                 ; work         ;
+;       |lpm_divide:Div0|                   ; 82 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3|lpm_divide:Div0                                                                                 ; work         ;
+;          |lpm_divide_sim:auto_generated|  ; 82 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3|lpm_divide:Div0|lpm_divide_sim:auto_generated                                                   ; work         ;
+;             |sign_div_unsign_klh:divider| ; 82 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3|lpm_divide:Div0|lpm_divide_sim:auto_generated|sign_div_unsign_klh:divider                       ; work         ;
+;                |alt_u_div_s6f:divider|    ; 82 (82)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3|lpm_divide:Div0|lpm_divide_sim:auto_generated|sign_div_unsign_klh:divider|alt_u_div_s6f:divider ; work         ;
+;       |lpm_divide:Div1|                   ; 69 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3|lpm_divide:Div1                                                                                 ; work         ;
+;          |lpm_divide_vim:auto_generated|  ; 69 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3|lpm_divide:Div1|lpm_divide_vim:auto_generated                                                   ; work         ;
+;             |sign_div_unsign_nlh:divider| ; 69 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3|lpm_divide:Div1|lpm_divide_vim:auto_generated|sign_div_unsign_nlh:divider                       ; work         ;
+;                |alt_u_div_27f:divider|    ; 69 (69)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3|lpm_divide:Div1|lpm_divide_vim:auto_generated|sign_div_unsign_nlh:divider|alt_u_div_27f:divider ; work         ;
+;       |lpm_divide:Mod0|                   ; 85 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3|lpm_divide:Mod0                                                                                 ; work         ;
+;          |lpm_divide_vam:auto_generated|  ; 85 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3|lpm_divide:Mod0|lpm_divide_vam:auto_generated                                                   ; work         ;
+;             |sign_div_unsign_klh:divider| ; 85 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3|lpm_divide:Mod0|lpm_divide_vam:auto_generated|sign_div_unsign_klh:divider                       ; work         ;
+;                |alt_u_div_s6f:divider|    ; 85 (85)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3|lpm_divide:Mod0|lpm_divide_vam:auto_generated|sign_div_unsign_klh:divider|alt_u_div_s6f:divider ; work         ;
+;       |lpm_divide:Mod1|                   ; 52 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3|lpm_divide:Mod1                                                                                 ; work         ;
+;          |lpm_divide_vam:auto_generated|  ; 52 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3|lpm_divide:Mod1|lpm_divide_vam:auto_generated                                                   ; work         ;
+;             |sign_div_unsign_klh:divider| ; 52 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3|lpm_divide:Mod1|lpm_divide_vam:auto_generated|sign_div_unsign_klh:divider                       ; work         ;
+;                |alt_u_div_s6f:divider|    ; 52 (52)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3|lpm_divide:Mod1|lpm_divide_vam:auto_generated|sign_div_unsign_klh:divider|alt_u_div_s6f:divider ; work         ;
+;       |lpm_divide:Mod2|                   ; 10 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3|lpm_divide:Mod2                                                                                 ; work         ;
+;          |lpm_divide_vam:auto_generated|  ; 10 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3|lpm_divide:Mod2|lpm_divide_vam:auto_generated                                                   ; work         ;
+;             |sign_div_unsign_klh:divider| ; 10 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3|lpm_divide:Mod2|lpm_divide_vam:auto_generated|sign_div_unsign_klh:divider                       ; work         ;
+;                |alt_u_div_s6f:divider|    ; 10 (10)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3|lpm_divide:Mod2|lpm_divide_vam:auto_generated|sign_div_unsign_klh:divider|alt_u_div_s6f:divider ; work         ;
+;       |seg7:s0|                           ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3|seg7:s0                                                                                         ; work         ;
+;       |seg7:s1|                           ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3|seg7:s1                                                                                         ; work         ;
+;       |seg7:s2|                           ; 7 (7)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|display:t3|seg7:s2                                                                                         ; work         ;
+;    |register_file:r_f|                    ; 35 (35)           ; 42 (42)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |top|register_file:r_f                                                                                          ; work         ;
++-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-----------------------------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++---------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                    ;
++-----------------------------------------+---------------------------------------------+
+; Register name                           ; Reason for Removal                          ;
++-----------------------------------------+---------------------------------------------+
+; register_file:r_f|rf_regs[31][0]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][31]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][30]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][29]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][28]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][27]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][26]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][25]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][24]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][23]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][22]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][21]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][20]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][19]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][18]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][17]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][16]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][15]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][14]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][13]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][12]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][11]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][10]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][9]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][8]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][7]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][6]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][5]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][4]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][3]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][2]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][1]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[8][0]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][31]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][30]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][29]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][28]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][27]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][26]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][25]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][24]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][23]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][22]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][21]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][20]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][19]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][18]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][17]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][16]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][15]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][14]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][13]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][12]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][11]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][10]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][9]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][8]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][7]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][6]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][5]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][4]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][3]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][2]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][1]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[9][0]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[10][31]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[10][30]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[10][29]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[10][28]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[10][27]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[10][26]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[10][25]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[10][24]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[10][23]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[10][22]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[10][21]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[10][20]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[10][19]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[10][18]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[10][17]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[10][16]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[10][15]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[10][14]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[10][13]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[10][12]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[10][11]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[10][10]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][31]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][30]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][29]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][28]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][27]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][26]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][25]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][24]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][23]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][22]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][21]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][20]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][19]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][18]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][17]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][16]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][15]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][14]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][13]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][12]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][11]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][10]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][9]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][8]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][7]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][6]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][5]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][4]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][3]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][2]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][1]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[11][0]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][31]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][30]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][29]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][28]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][27]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][26]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][25]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][24]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][23]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][22]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][21]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][20]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][19]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][18]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][17]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][16]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][15]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][14]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][13]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][12]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][11]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][10]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][9]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][8]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][7]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][6]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][5]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][4]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][3]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][2]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][1]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[12][0]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][31]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][30]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][29]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][28]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][27]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][26]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][25]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][24]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][23]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][22]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][21]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][20]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][19]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][18]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][17]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][16]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][15]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][14]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][13]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][12]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][11]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][10]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][9]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][8]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][7]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][6]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][5]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][4]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][3]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][2]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][1]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[13][0]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][31]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][30]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][29]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][28]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][27]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][26]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][25]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][24]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][23]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][22]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][21]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][20]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][19]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][18]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][17]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][16]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][15]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][14]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][13]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][12]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][11]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][10]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][9]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][8]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][7]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][6]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][5]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][4]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][3]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][2]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][1]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[14][0]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][31]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][30]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][29]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][28]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][27]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][26]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][25]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][24]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][23]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][22]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][21]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][20]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][19]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][18]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][17]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][16]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][15]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][14]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][13]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][12]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][11]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][10]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][9]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][8]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][7]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][6]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][5]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][4]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][3]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][2]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][1]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[15][0]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][31]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][30]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][29]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][28]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][27]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][26]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][25]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][24]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][23]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][22]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][21]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][20]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][19]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][18]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][17]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][16]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][15]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][14]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][13]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][12]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][11]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][10]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][9]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][8]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][7]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][6]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][5]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][4]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][3]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][2]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][1]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[16][0]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][31]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][30]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][29]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][28]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][27]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][26]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][25]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][24]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][23]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][22]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][21]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][20]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][19]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][18]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][17]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][16]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][15]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][14]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][13]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][12]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][11]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][10]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][9]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][8]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][7]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][6]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][5]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][4]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][3]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][2]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][1]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[17][0]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][31]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][30]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][29]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][28]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][27]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][26]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][25]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][24]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][23]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][22]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][21]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][20]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][19]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][18]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][17]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][16]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][15]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][14]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][13]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][12]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][11]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][10]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][9]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][8]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][7]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][6]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][5]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][4]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][3]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][2]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][1]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[18][0]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][31]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][30]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][29]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][28]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][27]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][26]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][25]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][24]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][23]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][22]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][21]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][20]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][19]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][18]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][17]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][16]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][15]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][14]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][13]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][12]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][11]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][10]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][9]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][8]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][7]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][6]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][5]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][4]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][3]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][2]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][1]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[19][0]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][31]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][30]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][29]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][28]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][27]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][26]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][25]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][24]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][23]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][22]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][21]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][20]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][19]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][18]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][17]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][16]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][15]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][14]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][13]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][12]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][11]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][10]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][9]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][8]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][7]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][6]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][5]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][4]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][3]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][2]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][1]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[20][0]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][31]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][30]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][29]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][28]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][27]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][26]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][25]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][24]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][23]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][22]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][21]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][20]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][19]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][18]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][17]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][16]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][15]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][14]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][13]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][12]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][11]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][10]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][9]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][8]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][7]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][6]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][5]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][4]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][3]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][2]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][1]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[21][0]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][31]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][30]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][29]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][28]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][27]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][26]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][25]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][24]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][23]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][22]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][21]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][20]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][19]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][18]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][17]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][16]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][15]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][14]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][13]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][12]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][11]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][10]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][9]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][8]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][7]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][6]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][5]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][4]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][3]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][2]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][1]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[22][0]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][31]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][30]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][29]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][28]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][27]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][26]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][25]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][24]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][23]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][22]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][21]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][20]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][19]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][18]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][17]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][16]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][15]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][14]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][13]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][12]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][11]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][10]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][9]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][8]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][7]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][6]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][5]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][4]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][3]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][2]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][1]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[23][0]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][31]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][30]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][29]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][28]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][27]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][26]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][25]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][24]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][23]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][22]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][21]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][20]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][19]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][18]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][17]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][16]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][15]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][14]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][13]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][12]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][11]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][10]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][9]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][8]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][7]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][6]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][5]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][4]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][3]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][2]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][1]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[24][0]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][31]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][30]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][29]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][28]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][27]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][26]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][25]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][24]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][23]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][22]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][21]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][20]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][19]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][18]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][17]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][16]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][15]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][14]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][13]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][12]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][11]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][10]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][9]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][8]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][7]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][6]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][5]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][4]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][3]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][2]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][1]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[25][0]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][31]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][30]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][29]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][28]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][27]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][26]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][25]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][24]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][23]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][22]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][21]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][20]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][19]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][18]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][17]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][16]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][15]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][14]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][13]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][12]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][11]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][10]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][9]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][8]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][7]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][6]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][5]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][4]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][3]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][2]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][1]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[26][0]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][31]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][30]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][29]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][28]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][27]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][26]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][25]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][24]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][23]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][22]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][21]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][20]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][19]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][18]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][17]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][16]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][15]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][14]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][13]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][12]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][11]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][10]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][9]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][8]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][7]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][6]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][5]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][4]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][3]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][2]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][1]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[27][0]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][31]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][30]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][29]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][28]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][27]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][26]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][25]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][24]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][23]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][22]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][21]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][20]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][19]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][18]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][17]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][16]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][15]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][14]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][13]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][12]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][11]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][10]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][9]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][8]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][7]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][6]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][5]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][4]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][3]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][2]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][1]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[28][0]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][31]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][30]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][29]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][28]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][27]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][26]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][25]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][24]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][23]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][22]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][21]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][20]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][19]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][18]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][17]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][16]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][15]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][14]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][13]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][12]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][11]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][10]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][9]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][8]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][7]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][6]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][5]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][4]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][3]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][2]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][1]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[29][0]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][31]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][30]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][29]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][28]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][27]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][26]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][25]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][24]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][23]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][22]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][21]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][20]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][19]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][18]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][17]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][16]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][15]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][14]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][13]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][12]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][11]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][10]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][9]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][8]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][7]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][6]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][5]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][4]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][3]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][2]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][1]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[30][0]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][31]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][30]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][29]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][28]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][27]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][26]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][25]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][24]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][23]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][22]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][21]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][20]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][19]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][18]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][17]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][16]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][15]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][14]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][13]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][12]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][11]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][10]       ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][9]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][8]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][7]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][6]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][5]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][4]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][3]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][2]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[31][1]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[4][31]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][30]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][29]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][28]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][27]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][26]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][25]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][24]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][23]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][22]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][21]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][20]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][19]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][18]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][17]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][16]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][15]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][14]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][13]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][12]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][11]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][10]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][9]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][8]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][7]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][6]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][5]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][4]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][3]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][2]         ; Stuck at VCC due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][1]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[4][0]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][31]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][30]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][29]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][28]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][27]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][26]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][25]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][24]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][23]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][22]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][21]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][20]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][19]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][18]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][17]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][16]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][15]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][14]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][13]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][12]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][11]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][10]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][9]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][8]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][7]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][6]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][5]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][4]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][3]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][2]         ; Stuck at VCC due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][1]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[5][0]         ; Stuck at VCC due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][31]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][30]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][29]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][28]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][27]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][26]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][25]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][24]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][23]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][22]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][21]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][20]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][19]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][18]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][17]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][16]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][15]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][14]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][13]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][12]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][11]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][10]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][9]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][8]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][7]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][6]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][5]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][4]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][3]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][2]         ; Stuck at VCC due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][1]         ; Stuck at VCC due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[6][0]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][31]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][30]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][29]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][28]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][27]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][26]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][25]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][24]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][23]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][22]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][21]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][20]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][19]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][18]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][17]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][16]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][15]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][14]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][13]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][12]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][11]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][10]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][9]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][8]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][7]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][6]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][5]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][4]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][3]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][2]         ; Stuck at VCC due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][1]         ; Stuck at VCC due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[7][0]         ; Stuck at VCC due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][31]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][30]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][29]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][28]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][27]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][26]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][25]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][24]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][23]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][22]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][21]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][20]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][19]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][18]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][17]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][16]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][15]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][14]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][13]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][12]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][11]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][10]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][9]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][8]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][7]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][6]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][5]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][4]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][3]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][2]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][1]         ; Stuck at VCC due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[3][0]         ; Stuck at VCC due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][0]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][1]         ; Stuck at VCC due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][2]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][3]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][4]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][5]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][6]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][7]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][8]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][9]         ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][10]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][11]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][12]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][13]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][14]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][15]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][16]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][17]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][18]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][19]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][20]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][21]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][22]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][23]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][24]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][25]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][26]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][27]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][28]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][29]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][30]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[2][31]        ; Stuck at GND due to stuck port clock_enable ;
+; register_file:r_f|rf_regs[0][0]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][1]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][2]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][3]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][4]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][5]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][6]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][7]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][8]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][9]         ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][10]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][11]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][12]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][13]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][14]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][15]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][16]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][17]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][18]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][19]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][20]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][21]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][22]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][23]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][24]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][25]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][26]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][27]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][28]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][29]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][30]        ; Lost fanout                                 ;
+; register_file:r_f|rf_regs[0][31]        ; Lost fanout                                 ;
+; Total Number of Removed Registers = 982 ;                                             ;
++-----------------------------------------+---------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                ;
++----------------------------------+--------------------------------+----------------------------------------+
+; Register name                    ; Reason for Removal             ; Registers Removed due to This Register ;
++----------------------------------+--------------------------------+----------------------------------------+
+; register_file:r_f|rf_regs[4][13] ; Stuck at GND                   ; register_file:r_f|rf_regs[0][13]       ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[2][30] ; Stuck at GND                   ; register_file:r_f|rf_regs[0][30]       ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[2][29] ; Stuck at GND                   ; register_file:r_f|rf_regs[0][29]       ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][0]  ; Stuck at GND                   ; register_file:r_f|rf_regs[0][0]        ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][1]  ; Stuck at GND                   ; register_file:r_f|rf_regs[0][1]        ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][2]  ; Stuck at VCC                   ; register_file:r_f|rf_regs[0][2]        ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][3]  ; Stuck at GND                   ; register_file:r_f|rf_regs[0][3]        ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][4]  ; Stuck at GND                   ; register_file:r_f|rf_regs[0][4]        ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][5]  ; Stuck at GND                   ; register_file:r_f|rf_regs[0][5]        ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][6]  ; Stuck at GND                   ; register_file:r_f|rf_regs[0][6]        ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][7]  ; Stuck at GND                   ; register_file:r_f|rf_regs[0][7]        ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][8]  ; Stuck at GND                   ; register_file:r_f|rf_regs[0][8]        ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][9]  ; Stuck at GND                   ; register_file:r_f|rf_regs[0][9]        ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][10] ; Stuck at GND                   ; register_file:r_f|rf_regs[0][10]       ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][11] ; Stuck at GND                   ; register_file:r_f|rf_regs[0][11]       ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][12] ; Stuck at GND                   ; register_file:r_f|rf_regs[0][12]       ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][31] ; Stuck at GND                   ; register_file:r_f|rf_regs[0][31]       ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][14] ; Stuck at GND                   ; register_file:r_f|rf_regs[0][14]       ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][15] ; Stuck at GND                   ; register_file:r_f|rf_regs[0][15]       ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][16] ; Stuck at GND                   ; register_file:r_f|rf_regs[0][16]       ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][17] ; Stuck at GND                   ; register_file:r_f|rf_regs[0][17]       ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][18] ; Stuck at GND                   ; register_file:r_f|rf_regs[0][18]       ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][19] ; Stuck at GND                   ; register_file:r_f|rf_regs[0][19]       ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][20] ; Stuck at GND                   ; register_file:r_f|rf_regs[0][20]       ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][21] ; Stuck at GND                   ; register_file:r_f|rf_regs[0][21]       ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][22] ; Stuck at GND                   ; register_file:r_f|rf_regs[0][22]       ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][23] ; Stuck at GND                   ; register_file:r_f|rf_regs[0][23]       ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][24] ; Stuck at GND                   ; register_file:r_f|rf_regs[0][24]       ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][25] ; Stuck at GND                   ; register_file:r_f|rf_regs[0][25]       ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][26] ; Stuck at GND                   ; register_file:r_f|rf_regs[0][26]       ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][27] ; Stuck at GND                   ; register_file:r_f|rf_regs[0][27]       ;
+;                                  ; due to stuck port clock_enable ;                                        ;
+; register_file:r_f|rf_regs[4][28] ; Stuck at GND                   ; register_file:r_f|rf_regs[0][28]       ;
+;                                  ; due to stuck port clock_enable ;                                        ;
++----------------------------------+--------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -216,56 +1369,408 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 1024  ;
+; Total registers                              ; 8234  ;
 ; Number of registers using Synchronous Clear  ; 0     ;
 ; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Clear ; 8234  ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 1024  ;
+; Number of registers using Clock Enable       ; 8234  ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                               ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output     ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------+
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[31][8]  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[30][0]  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[29][2]  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[28][23] ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[27][8]  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[26][3]  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[25][20] ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[24][5]  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[23][6]  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[22][21] ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[21][8]  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[20][9]  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[19][12] ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[18][4]  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[17][25] ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[16][6]  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[15][8]  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[14][24] ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[13][11] ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[12][10] ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[11][26] ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[10][6]  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[9][22]  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[8][14]  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[7][24]  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[6][18]  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[5][29]  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[4][19]  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[3][18]  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[2][29]  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[1][30]  ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |register_file|rf_regs[0][30]  ;
-; 33:1               ; 32 bits   ; 704 LEs       ; 704 LEs              ; 0 LEs                  ; No         ; |register_file|RD1             ;
-; 33:1               ; 32 bits   ; 704 LEs       ; 704 LEs              ; 0 LEs                  ; No         ; |register_file|RD2             ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------+
++------------------------------------------------------+
+; Inverted Register Statistics                         ;
++--------------------------------------------+---------+
+; Inverted Register                          ; Fan out ;
++--------------------------------------------+---------+
+; register_file:r_f|rf_regs[1][0]            ; 3       ;
+; data_memory:d_m|mem[2][1]                  ; 7       ;
+; register_file:r_f|rf_regs[10][1]           ; 5       ;
+; register_file:r_f|rf_regs[10][3]           ; 9       ;
+; data_memory:d_m|mem[147][0]                ; 1       ;
+; data_memory:d_m|mem[151][0]                ; 1       ;
+; data_memory:d_m|mem[153][0]                ; 1       ;
+; data_memory:d_m|mem[157][0]                ; 1       ;
+; data_memory:d_m|mem[145][0]                ; 1       ;
+; data_memory:d_m|mem[149][0]                ; 1       ;
+; data_memory:d_m|mem[155][0]                ; 1       ;
+; data_memory:d_m|mem[159][0]                ; 1       ;
+; data_memory:d_m|mem[169][0]                ; 1       ;
+; data_memory:d_m|mem[171][0]                ; 1       ;
+; data_memory:d_m|mem[165][0]                ; 1       ;
+; data_memory:d_m|mem[167][0]                ; 1       ;
+; data_memory:d_m|mem[161][0]                ; 1       ;
+; data_memory:d_m|mem[163][0]                ; 1       ;
+; data_memory:d_m|mem[173][0]                ; 1       ;
+; data_memory:d_m|mem[175][0]                ; 1       ;
+; data_memory:d_m|mem[137][0]                ; 1       ;
+; data_memory:d_m|mem[141][0]                ; 1       ;
+; data_memory:d_m|mem[131][0]                ; 1       ;
+; data_memory:d_m|mem[135][0]                ; 1       ;
+; data_memory:d_m|mem[129][0]                ; 1       ;
+; data_memory:d_m|mem[133][0]                ; 1       ;
+; data_memory:d_m|mem[139][0]                ; 1       ;
+; data_memory:d_m|mem[143][0]                ; 1       ;
+; data_memory:d_m|mem[181][0]                ; 1       ;
+; data_memory:d_m|mem[185][0]                ; 1       ;
+; data_memory:d_m|mem[177][0]                ; 1       ;
+; data_memory:d_m|mem[189][0]                ; 1       ;
+; data_memory:d_m|mem[183][0]                ; 1       ;
+; data_memory:d_m|mem[187][0]                ; 1       ;
+; data_memory:d_m|mem[179][0]                ; 1       ;
+; data_memory:d_m|mem[191][0]                ; 1       ;
+; data_memory:d_m|mem[75][0]                 ; 1       ;
+; data_memory:d_m|mem[105][0]                ; 1       ;
+; data_memory:d_m|mem[73][0]                 ; 1       ;
+; data_memory:d_m|mem[107][0]                ; 1       ;
+; data_memory:d_m|mem[113][0]                ; 1       ;
+; data_memory:d_m|mem[83][0]                 ; 1       ;
+; data_memory:d_m|mem[81][0]                 ; 1       ;
+; data_memory:d_m|mem[115][0]                ; 1       ;
+; data_memory:d_m|mem[67][0]                 ; 1       ;
+; data_memory:d_m|mem[97][0]                 ; 1       ;
+; data_memory:d_m|mem[65][0]                 ; 1       ;
+; data_memory:d_m|mem[99][0]                 ; 1       ;
+; data_memory:d_m|mem[121][0]                ; 1       ;
+; data_memory:d_m|mem[91][0]                 ; 1       ;
+; data_memory:d_m|mem[89][0]                 ; 1       ;
+; data_memory:d_m|mem[123][0]                ; 1       ;
+; data_memory:d_m|mem[109][0]                ; 1       ;
+; data_memory:d_m|mem[103][0]                ; 1       ;
+; data_memory:d_m|mem[101][0]                ; 1       ;
+; data_memory:d_m|mem[111][0]                ; 1       ;
+; data_memory:d_m|mem[93][0]                 ; 1       ;
+; data_memory:d_m|mem[87][0]                 ; 1       ;
+; data_memory:d_m|mem[85][0]                 ; 1       ;
+; data_memory:d_m|mem[95][0]                 ; 1       ;
+; data_memory:d_m|mem[77][0]                 ; 1       ;
+; data_memory:d_m|mem[71][0]                 ; 1       ;
+; data_memory:d_m|mem[69][0]                 ; 1       ;
+; data_memory:d_m|mem[79][0]                 ; 1       ;
+; data_memory:d_m|mem[119][0]                ; 1       ;
+; data_memory:d_m|mem[125][0]                ; 1       ;
+; data_memory:d_m|mem[117][0]                ; 1       ;
+; data_memory:d_m|mem[127][0]                ; 1       ;
+; data_memory:d_m|mem[49][0]                 ; 1       ;
+; data_memory:d_m|mem[37][0]                 ; 1       ;
+; data_memory:d_m|mem[33][0]                 ; 1       ;
+; data_memory:d_m|mem[53][0]                 ; 1       ;
+; data_memory:d_m|mem[57][0]                 ; 1       ;
+; data_memory:d_m|mem[45][0]                 ; 1       ;
+; data_memory:d_m|mem[41][0]                 ; 1       ;
+; data_memory:d_m|mem[61][0]                 ; 1       ;
+; data_memory:d_m|mem[19][0]                 ; 1       ;
+; data_memory:d_m|mem[11][0]                 ; 1       ;
+; data_memory:d_m|mem[3][0]                  ; 1       ;
+; data_memory:d_m|mem[27][0]                 ; 1       ;
+; data_memory:d_m|mem[23][0]                 ; 1       ;
+; data_memory:d_m|mem[15][0]                 ; 1       ;
+; data_memory:d_m|mem[7][0]                  ; 1       ;
+; data_memory:d_m|mem[31][0]                 ; 1       ;
+; data_memory:d_m|mem[17][0]                 ; 1       ;
+; data_memory:d_m|mem[9][0]                  ; 1       ;
+; data_memory:d_m|mem[1][0]                  ; 1       ;
+; data_memory:d_m|mem[25][0]                 ; 1       ;
+; data_memory:d_m|mem[21][0]                 ; 1       ;
+; data_memory:d_m|mem[13][0]                 ; 1       ;
+; data_memory:d_m|mem[5][0]                  ; 1       ;
+; data_memory:d_m|mem[29][0]                 ; 1       ;
+; data_memory:d_m|mem[43][0]                 ; 1       ;
+; data_memory:d_m|mem[59][0]                 ; 1       ;
+; data_memory:d_m|mem[39][0]                 ; 1       ;
+; data_memory:d_m|mem[55][0]                 ; 1       ;
+; data_memory:d_m|mem[35][0]                 ; 1       ;
+; data_memory:d_m|mem[51][0]                 ; 1       ;
+; data_memory:d_m|mem[47][0]                 ; 1       ;
+; data_memory:d_m|mem[63][0]                 ; 1       ;
+; Total number of inverted registers = 1027* ;         ;
++--------------------------------------------+---------+
+* Table truncated at 100 items. To change the number of inverted registers reported, set the "Number of Inverted Registers Reported" option under Assignments->Settings->Analysis and Synthesis Settings->More Settings
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
+; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |top|inst_ex[16]                       ;
+; 5:1                ; 32 bits   ; 96 LEs        ; 96 LEs               ; 0 LEs                  ; No         ; |top|register_file:r_f|RD1[14]         ;
+; 4:1                ; 26 bits   ; 52 LEs        ; 52 LEs               ; 0 LEs                  ; No         ; |top|ALU:t1|Add0                       ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |top|ALU:t1|Add0                       ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 6 LEs                ; 0 LEs                  ; No         ; |top|ALU:t1|Add0                       ;
+; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |top|inst_ex[17]                       ;
+; 6:1                ; 30 bits   ; 120 LEs       ; 120 LEs              ; 0 LEs                  ; No         ; |top|register_file:r_f|RD2[15]         ;
+; 257:1              ; 32 bits   ; 5472 LEs      ; 5472 LEs             ; 0 LEs                  ; No         ; |top|MUX_MemtoReg:m_mr|MemtoReg_out[1] ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------------------+
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: display:t2|lpm_divide:Mod0 ;
++------------------------+----------------+-----------------------------------+
+; Parameter Name         ; Value          ; Type                              ;
++------------------------+----------------+-----------------------------------+
+; LPM_WIDTHN             ; 10             ; Untyped                           ;
+; LPM_WIDTHD             ; 4              ; Untyped                           ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                           ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                           ;
+; LPM_PIPELINE           ; 0              ; Untyped                           ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                           ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                           ;
+; CBXI_PARAMETER         ; lpm_divide_vam ; Untyped                           ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                           ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                           ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                        ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                      ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                      ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                    ;
++------------------------+----------------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: display:t2|lpm_divide:Div0 ;
++------------------------+----------------+-----------------------------------+
+; Parameter Name         ; Value          ; Type                              ;
++------------------------+----------------+-----------------------------------+
+; LPM_WIDTHN             ; 10             ; Untyped                           ;
+; LPM_WIDTHD             ; 4              ; Untyped                           ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                           ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                           ;
+; LPM_PIPELINE           ; 0              ; Untyped                           ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                           ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                           ;
+; CBXI_PARAMETER         ; lpm_divide_sim ; Untyped                           ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                           ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                           ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                        ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                      ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                      ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                    ;
++------------------------+----------------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: display:t2|lpm_divide:Mod1 ;
++------------------------+----------------+-----------------------------------+
+; Parameter Name         ; Value          ; Type                              ;
++------------------------+----------------+-----------------------------------+
+; LPM_WIDTHN             ; 10             ; Untyped                           ;
+; LPM_WIDTHD             ; 4              ; Untyped                           ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                           ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                           ;
+; LPM_PIPELINE           ; 0              ; Untyped                           ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                           ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                           ;
+; CBXI_PARAMETER         ; lpm_divide_vam ; Untyped                           ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                           ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                           ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                        ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                      ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                      ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                    ;
++------------------------+----------------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: display:t2|lpm_divide:Div1 ;
++------------------------+----------------+-----------------------------------+
+; Parameter Name         ; Value          ; Type                              ;
++------------------------+----------------+-----------------------------------+
+; LPM_WIDTHN             ; 10             ; Untyped                           ;
+; LPM_WIDTHD             ; 7              ; Untyped                           ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                           ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                           ;
+; LPM_PIPELINE           ; 0              ; Untyped                           ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                           ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                           ;
+; CBXI_PARAMETER         ; lpm_divide_vim ; Untyped                           ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                           ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                           ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                        ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                      ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                      ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                    ;
++------------------------+----------------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: display:t2|lpm_divide:Mod2 ;
++------------------------+----------------+-----------------------------------+
+; Parameter Name         ; Value          ; Type                              ;
++------------------------+----------------+-----------------------------------+
+; LPM_WIDTHN             ; 10             ; Untyped                           ;
+; LPM_WIDTHD             ; 4              ; Untyped                           ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                           ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                           ;
+; LPM_PIPELINE           ; 0              ; Untyped                           ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                           ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                           ;
+; CBXI_PARAMETER         ; lpm_divide_vam ; Untyped                           ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                           ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                           ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                        ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                      ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                      ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                    ;
++------------------------+----------------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: display:t3|lpm_divide:Mod0 ;
++------------------------+----------------+-----------------------------------+
+; Parameter Name         ; Value          ; Type                              ;
++------------------------+----------------+-----------------------------------+
+; LPM_WIDTHN             ; 10             ; Untyped                           ;
+; LPM_WIDTHD             ; 4              ; Untyped                           ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                           ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                           ;
+; LPM_PIPELINE           ; 0              ; Untyped                           ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                           ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                           ;
+; CBXI_PARAMETER         ; lpm_divide_vam ; Untyped                           ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                           ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                           ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                        ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                      ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                      ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                    ;
++------------------------+----------------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: display:t3|lpm_divide:Div0 ;
++------------------------+----------------+-----------------------------------+
+; Parameter Name         ; Value          ; Type                              ;
++------------------------+----------------+-----------------------------------+
+; LPM_WIDTHN             ; 10             ; Untyped                           ;
+; LPM_WIDTHD             ; 4              ; Untyped                           ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                           ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                           ;
+; LPM_PIPELINE           ; 0              ; Untyped                           ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                           ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                           ;
+; CBXI_PARAMETER         ; lpm_divide_sim ; Untyped                           ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                           ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                           ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                        ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                      ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                      ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                    ;
++------------------------+----------------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: display:t3|lpm_divide:Mod1 ;
++------------------------+----------------+-----------------------------------+
+; Parameter Name         ; Value          ; Type                              ;
++------------------------+----------------+-----------------------------------+
+; LPM_WIDTHN             ; 10             ; Untyped                           ;
+; LPM_WIDTHD             ; 4              ; Untyped                           ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                           ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                           ;
+; LPM_PIPELINE           ; 0              ; Untyped                           ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                           ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                           ;
+; CBXI_PARAMETER         ; lpm_divide_vam ; Untyped                           ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                           ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                           ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                        ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                      ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                      ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                    ;
++------------------------+----------------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: display:t3|lpm_divide:Div1 ;
++------------------------+----------------+-----------------------------------+
+; Parameter Name         ; Value          ; Type                              ;
++------------------------+----------------+-----------------------------------+
+; LPM_WIDTHN             ; 10             ; Untyped                           ;
+; LPM_WIDTHD             ; 7              ; Untyped                           ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                           ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                           ;
+; LPM_PIPELINE           ; 0              ; Untyped                           ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                           ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                           ;
+; CBXI_PARAMETER         ; lpm_divide_vim ; Untyped                           ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                           ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                           ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                        ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                      ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                      ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                    ;
++------------------------+----------------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: display:t3|lpm_divide:Mod2 ;
++------------------------+----------------+-----------------------------------+
+; Parameter Name         ; Value          ; Type                              ;
++------------------------+----------------+-----------------------------------+
+; LPM_WIDTHN             ; 10             ; Untyped                           ;
+; LPM_WIDTHD             ; 4              ; Untyped                           ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                           ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                           ;
+; LPM_PIPELINE           ; 0              ; Untyped                           ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                           ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                           ;
+; CBXI_PARAMETER         ; lpm_divide_vam ; Untyped                           ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                           ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                           ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                        ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                      ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                      ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                    ;
++------------------------+----------------+-----------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------+
+; Port Connectivity Checks: "ALU:t1"              ;
++---------------+-------+----------+--------------+
+; Port          ; Type  ; Severity ; Details      ;
++---------------+-------+----------+--------------+
+; ALUControl[0] ; Input ; Info     ; Stuck at GND ;
++---------------+-------+----------+--------------+
+
+
++-----------------------------------------------+
+; Port Connectivity Checks: "register_file:r_f" ;
++----------+-------+----------+-----------------+
+; Port     ; Type  ; Severity ; Details         ;
++----------+-------+----------+-----------------+
+; A1[4..3] ; Input ; Info     ; Stuck at GND    ;
++----------+-------+----------+-----------------+
+
+
++---------------------------------------------+
+; Port Connectivity Checks: "MUX_RegDst:m_rd" ;
++----------+-------+----------+---------------+
+; Port     ; Type  ; Severity ; Details       ;
++----------+-------+----------+---------------+
+; rt[4..3] ; Input ; Info     ; Stuck at GND  ;
++----------+-------+----------+---------------+
+
+
++----------------------------------------------+
+; Port Connectivity Checks: "sign_extend:se"   ;
++------------+-------+----------+--------------+
+; Port       ; Type  ; Severity ; Details      ;
++------------+-------+----------+--------------+
+; Imm[10..3] ; Input ; Info     ; Stuck at GND ;
+; Imm[15]    ; Input ; Info     ; Stuck at GND ;
+; Imm[13]    ; Input ; Info     ; Stuck at GND ;
++------------+-------+----------+--------------+
 
 
 +-----------------------------------------------------+
@@ -273,15 +1778,23 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; boundary_port         ; 146                         ;
-; cycloneiii_ff         ; 1024                        ;
-;     ENA               ; 1024                        ;
-; cycloneiii_lcell_comb ; 2418                        ;
-;     normal            ; 2418                        ;
-;         4 data inputs ; 2418                        ;
+; boundary_port         ; 207                         ;
+; cycloneiii_ff         ; 8234                        ;
+;     ENA CLR           ; 8234                        ;
+; cycloneiii_lcell_comb ; 7509                        ;
+;     arith             ; 226                         ;
+;         1 data inputs ; 4                           ;
+;         2 data inputs ; 62                          ;
+;         3 data inputs ; 160                         ;
+;     normal            ; 7283                        ;
+;         0 data inputs ; 47                          ;
+;         1 data inputs ; 1046                        ;
+;         2 data inputs ; 201                         ;
+;         3 data inputs ; 316                         ;
+;         4 data inputs ; 5673                        ;
 ;                       ;                             ;
-; Max LUT depth         ; 5.00                        ;
-; Average LUT depth     ; 3.59                        ;
+; Max LUT depth         ; 21.70                       ;
+; Average LUT depth     ; 8.36                        ;
 +-----------------------+-----------------------------+
 
 
@@ -290,7 +1803,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:22     ;
 +----------------+--------------+
 
 
@@ -300,25 +1813,143 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 15.0.2 Build 153 07/15/2015 SJ Web Edition
-    Info: Processing started: Wed Nov  4 16:43:58 2026
+    Info: Processing started: Wed Nov 11 17:33:40 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Lab5 -c Lab5
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file register_file.sv
     Info (12023): Found entity 1: register_file
 Info (12021): Found 1 design units, including 1 entities, in source file ALU.sv
     Info (12023): Found entity 1: ALU
-Info (12127): Elaborating entity "register_file" for the top level hierarchy
+Info (12021): Found 1 design units, including 1 entities, in source file data_memory.sv
+    Info (12023): Found entity 1: data_memory
+Info (12021): Found 1 design units, including 1 entities, in source file sign_extend.sv
+    Info (12023): Found entity 1: sign_extend
+Info (12021): Found 1 design units, including 1 entities, in source file MUX_RegDst.sv
+    Info (12023): Found entity 1: MUX_RegDst
+Info (12021): Found 1 design units, including 1 entities, in source file MUX_MemtoReg.sv
+    Info (12023): Found entity 1: MUX_MemtoReg
+Info (12021): Found 1 design units, including 1 entities, in source file MUX_ALUSrc.sv
+    Info (12023): Found entity 1: MUX_ALUSrc
+Info (12021): Found 1 design units, including 1 entities, in source file top.sv
+    Info (12023): Found entity 1: top
+Info (12021): Found 2 design units, including 2 entities, in source file display.sv
+    Info (12023): Found entity 1: seg7
+    Info (12023): Found entity 2: display
+Info (12127): Elaborating entity "top" for the top level hierarchy
+Info (12128): Elaborating entity "sign_extend" for hierarchy "sign_extend:se"
+Info (12128): Elaborating entity "MUX_RegDst" for hierarchy "MUX_RegDst:m_rd"
+Info (12128): Elaborating entity "register_file" for hierarchy "register_file:r_f"
+Info (12128): Elaborating entity "MUX_ALUSrc" for hierarchy "MUX_ALUSrc:m_as"
+Info (12128): Elaborating entity "ALU" for hierarchy "ALU:t1"
+Info (12128): Elaborating entity "data_memory" for hierarchy "data_memory:d_m"
+Info (12128): Elaborating entity "MUX_MemtoReg" for hierarchy "MUX_MemtoReg:m_mr"
+Info (12128): Elaborating entity "display" for hierarchy "display:t2"
+Warning (10230): Verilog HDL assignment warning at display.sv(30): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at display.sv(31): truncated value with size 32 to match size of target (4)
+Warning (10230): Verilog HDL assignment warning at display.sv(32): truncated value with size 32 to match size of target (4)
+Info (12128): Elaborating entity "seg7" for hierarchy "display:t2|seg7:s0"
+Info (278001): Inferred 10 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "display:t2|Mod0"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "display:t2|Div0"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "display:t2|Mod1"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "display:t2|Div1"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "display:t2|Mod2"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "display:t3|Mod0"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "display:t3|Div0"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "display:t3|Mod1"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "display:t3|Div1"
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "display:t3|Mod2"
+Info (12130): Elaborated megafunction instantiation "display:t2|lpm_divide:Mod0"
+Info (12133): Instantiated megafunction "display:t2|lpm_divide:Mod0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "10"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_vam.tdf
+    Info (12023): Found entity 1: lpm_divide_vam
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_klh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_klh
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_s6f.tdf
+    Info (12023): Found entity 1: alt_u_div_s6f
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_7pc.tdf
+    Info (12023): Found entity 1: add_sub_7pc
+Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
+    Info (12023): Found entity 1: add_sub_8pc
+Info (12130): Elaborated megafunction instantiation "display:t2|lpm_divide:Div0"
+Info (12133): Instantiated megafunction "display:t2|lpm_divide:Div0" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "10"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_sim.tdf
+    Info (12023): Found entity 1: lpm_divide_sim
+Info (12130): Elaborated megafunction instantiation "display:t2|lpm_divide:Div1"
+Info (12133): Instantiated megafunction "display:t2|lpm_divide:Div1" with the following parameter:
+    Info (12134): Parameter "LPM_WIDTHN" = "10"
+    Info (12134): Parameter "LPM_WIDTHD" = "7"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_vim.tdf
+    Info (12023): Found entity 1: lpm_divide_vim
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_nlh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_nlh
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_27f.tdf
+    Info (12023): Found entity 1: alt_u_div_27f
+Info (13000): Registers with preset signals will power-up high
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "RD1[3]" is stuck at GND
+    Warning (13410): Pin "RD1[4]" is stuck at GND
+    Warning (13410): Pin "RD1[5]" is stuck at GND
+    Warning (13410): Pin "RD1[6]" is stuck at GND
+    Warning (13410): Pin "RD1[7]" is stuck at GND
+    Warning (13410): Pin "RD1[8]" is stuck at GND
+    Warning (13410): Pin "RD1[9]" is stuck at GND
+    Warning (13410): Pin "RD1[10]" is stuck at GND
+    Warning (13410): Pin "RD1[11]" is stuck at GND
+    Warning (13410): Pin "RD1[12]" is stuck at GND
+    Warning (13410): Pin "RD1[13]" is stuck at GND
+    Warning (13410): Pin "RD1[14]" is stuck at GND
+    Warning (13410): Pin "RD1[15]" is stuck at GND
+    Warning (13410): Pin "RD1[16]" is stuck at GND
+    Warning (13410): Pin "RD1[17]" is stuck at GND
+    Warning (13410): Pin "RD1[18]" is stuck at GND
+    Warning (13410): Pin "RD1[19]" is stuck at GND
+    Warning (13410): Pin "RD1[20]" is stuck at GND
+    Warning (13410): Pin "RD1[21]" is stuck at GND
+    Warning (13410): Pin "RD1[22]" is stuck at GND
+    Warning (13410): Pin "RD1[23]" is stuck at GND
+    Warning (13410): Pin "RD1[24]" is stuck at GND
+    Warning (13410): Pin "RD1[25]" is stuck at GND
+    Warning (13410): Pin "RD1[26]" is stuck at GND
+    Warning (13410): Pin "RD1[27]" is stuck at GND
+    Warning (13410): Pin "RD1[28]" is stuck at GND
+    Warning (13410): Pin "RD1[29]" is stuck at GND
+    Warning (13410): Pin "RD1[30]" is stuck at GND
+    Warning (13410): Pin "RD1[31]" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
+Info (17049): 790 registers lost all their fanouts during netlist optimizations.
+Info (17016): Found the following redundant logic cells in design
+    Info (17048): Logic cell "display:t2|lpm_divide:Mod1|lpm_divide_vam:auto_generated|sign_div_unsign_klh:divider|alt_u_div_s6f:divider|add_sub_9_result_int[0]~0"
+    Info (17048): Logic cell "display:t2|lpm_divide:Mod1|lpm_divide_vam:auto_generated|sign_div_unsign_klh:divider|alt_u_div_s6f:divider|add_sub_6_result_int[0]~10"
+    Info (17048): Logic cell "display:t2|lpm_divide:Mod1|lpm_divide_vam:auto_generated|sign_div_unsign_klh:divider|alt_u_div_s6f:divider|add_sub_7_result_int[0]~10"
+    Info (17048): Logic cell "display:t2|lpm_divide:Mod1|lpm_divide_vam:auto_generated|sign_div_unsign_klh:divider|alt_u_div_s6f:divider|add_sub_8_result_int[0]~10"
+    Info (17048): Logic cell "display:t2|lpm_divide:Mod2|lpm_divide_vam:auto_generated|sign_div_unsign_klh:divider|alt_u_div_s6f:divider|add_sub_9_result_int[0]~0"
+    Info (17048): Logic cell "display:t3|lpm_divide:Mod1|lpm_divide_vam:auto_generated|sign_div_unsign_klh:divider|alt_u_div_s6f:divider|add_sub_9_result_int[0]~0"
+    Info (17048): Logic cell "display:t3|lpm_divide:Mod1|lpm_divide_vam:auto_generated|sign_div_unsign_klh:divider|alt_u_div_s6f:divider|add_sub_6_result_int[0]~10"
+    Info (17048): Logic cell "display:t3|lpm_divide:Mod1|lpm_divide_vam:auto_generated|sign_div_unsign_klh:divider|alt_u_div_s6f:divider|add_sub_7_result_int[0]~10"
+    Info (17048): Logic cell "display:t3|lpm_divide:Mod1|lpm_divide_vam:auto_generated|sign_div_unsign_klh:divider|alt_u_div_s6f:divider|add_sub_8_result_int[0]~10"
+    Info (17048): Logic cell "display:t3|lpm_divide:Mod2|lpm_divide_vam:auto_generated|sign_div_unsign_klh:divider|alt_u_div_s6f:divider|add_sub_9_result_int[0]~0"
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 2564 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 50 input pins
-    Info (21059): Implemented 96 output pins
-    Info (21061): Implemented 2418 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 990 megabytes
-    Info: Processing ended: Wed Nov  4 16:44:07 2026
-    Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:20
+Info (21057): Implemented 14892 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 5 input pins
+    Info (21059): Implemented 202 output pins
+    Info (21061): Implemented 14685 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 34 warnings
+    Info: Peak virtual memory: 1075 megabytes
+    Info: Processing ended: Wed Nov 11 17:34:12 2026
+    Info: Elapsed time: 00:00:32
+    Info: Total CPU time (on all processors): 00:00:43
 
 
